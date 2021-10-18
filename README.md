@@ -1,6 +1,6 @@
 ## 소개
 
-Chaeduk의 JSP 스터디🌕🌕🌕
+Chaeduk의 JSP 스터디😎😎😎
 
 ## 커밋 메시지
 
