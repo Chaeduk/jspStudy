@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>calculate</title>
+</head>
+<body>
+	<div align="center">
+		<h3>계산기: 서블릿</h3>
+		<hr>
+		<form name=form1 action="http://localhost:8080/jspStudy/CalcController" method=get>
+			<input type="text" name="num1" width=200 size="5">
+			<select name="operator">
+				<option selected>+</option>
+				<option>-</option>
+				<option>*</option>
+				<option>/</option>
+			</select>
+			<input type="text" name="num2" width=200 size="5">
+			<input type="submit" value="계산" name="B1">
+			<input type="reset" value="다시입력" name="B2">
+		</form>
+		<hr>
+	</div>
+
+</body>
+</html>
