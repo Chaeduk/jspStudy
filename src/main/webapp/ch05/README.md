@@ -45,7 +45,7 @@
 
 <div align=center>
 
-![forward]](./05.PNG)
+![forward](./05.PNG)
 
 </div>
 
