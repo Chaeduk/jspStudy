@@ -1,0 +1,70 @@
+package jspStudy.ch08;
+
+import java.io.IOException;
+import java.io.PrintWriter;
+import java.util.List;
+
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
+
+/**
+ * Servlet implementation class JsonServlet
+ */
+@WebServlet("/JsonServlet")
+public class JsonServlet extends HttpServlet {
+	private static final long serialVersionUID = 1L;
+
+	/**
+	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
+	 */
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		// TODO Auto-generated method stub
+		request.setCharacterEncoding("UTF-8");
+		response.setContentType("application/json;charset=UTF-8");
+		
+		String cmd;
+		cmd = request.getParameter("key");
+		PrintWriter out = response.getWriter();
+		
+		if(cmd.equals("list")) {
+			StudentDAO studentDAO = new StudentDAO();
+			List<StudentVO> studentlist = studentDAO.getStudentList();
+			JSONArray arrayJson = new JSONArray();
+			
+			try {
+				for(StudentVO vo : studentlist) {
+					JSONObject json = new JSONObject();
+					
+					json.put("id", vo.getId());
+					json.put("username", vo.getUsername());
+					json.put("depart", vo.getDepart());
+					json.put("email", vo.getEmail());
+					json.put("passwd", vo.getPasswd());
+					json.put("snum", vo.getSnum());
+					json.put("mobile", vo.getMobile());
+					arrayJson.put(json);
+				}
+			} catch(JSONException e) {
+				e.printStackTrace();
+			}
+			out.print(arrayJson);
+		}
+	}
+
+	/**
+	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
+	 */
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		// TODO Auto-generated method stub
+		doGet(request, response);
+	}
+
+}
